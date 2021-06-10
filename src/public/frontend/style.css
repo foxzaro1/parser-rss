@@ -1,0 +1,93 @@
+h1{
+    text-align:center;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    border: 1.5px black solid;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto;
+}
+.main .section{
+    display: flex;
+    padding: 10px 0px;
+    border-bottom: 1px black solid;
+}
+.main .section .group{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.main .section .group .simple-block{
+    display: flex;
+    padding-bottom: 20px;
+    justify-content: space-between;
+}
+.main .section .group .simple-block .description{
+    font-weight: 700;
+}
+.main .section .group .simple-block .title{
+    padding-right: 10px;
+}
+.main .section .group .sub-block{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main .section .group .sub-block .title{
+    padding-bottom: 20px;
+    font-weight: 600;
+}
+.main .section .group .description.top-words{
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.main .section .group .description.top-words .item{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px black solid;
+    border-radius: 20px;
+}
+.main .section .group .sub-block .description{
+    text-align:center;
+}
+
+.posts{
+    display:flex;
+    flex-direction: column;
+}
+.posts .post{
+    display:flex;
+    margin-bottom:20px;
+}
+.posts .image{
+    margin-right: 20px;
+}
+.posts img{
+    max-width: 200px;
+}
+.posts .detail{
+    padding:10px
+}
+.posts .detail .common{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.posts .common .item{
+ margin-right: 10px;
+}
+.posts .common .item.category{
+    font-weight: 700;
+}
+.posts .common .item.title{
+    font-size: 18px;
+}
+.posts .common .item.time{
+    font-style: oblique;
+}
