@@ -11,6 +11,168 @@
 
 Все реализации `/test/`.
 
+### Описание классов и методов
+Categories - некоторая реализация модели категорий
+```php
+<?php
+
+$categories = new Categories();
+
+// добавление категории новости
+$categories->addCategory('Новости');
+
+// вернуть все категориии, внутри принимается параметр, отвечающий за уникальность списка регулируется значениями true/false, по умолчанию true - вернет уникальный список категорий
+$categories->getAllCategories();
+
+// вернуть популярные категории, внутри принимается параметра, отвечающий за количество для вывода, по умолчанию false - что обозначает вывести все
+$categories->getMostPopular();
+
+
+?>
+```
+Words - некоторая реализация модели слов
+
+```php
+<?php
+
+$words = new Words();
+
+// добавление массива слов
+$words->addWords(['Новости','сегодня']);
+
+// добавление слов из строки
+$words->addWordsFromString('Обычное описание новости');
+
+// вернуть все слова
+$words->getAllWords();
+
+// вернуть популярные слова, внутри принимается параметра, отвечающий за количество для вывода, по умолчанию 5 
+$words->getMostPopular();
+
+// вернуть количество слов 
+$words->countWords();
+
+?>
+```
+
+DateDiff - класс для работы с датами
+
+
+```php
+<?php
+
+$dates = new DateDiff();
+
+// добавление времени входной параметр должен быть \DateTime объектом
+$date = new \DateTime('now');
+$dates->addDate($date);
+
+// функция для подсчета общего времени интервала, может принимать в себя два параметра первый отвечает за выборку дат массив из объектов \DateTime, по умолчанию false - считает общее количество интервала добавленных дат в объект, второй параметр является маской для вывода по умолчанию "%H:%I:%S". 
+$dates->getCommonDiff();
+
+?>
+```
+Parser - абстрактный класс парсера
+
+```php
+<?php
+при инициализации должен принимать объект относящийся к интерфейсу IParserSource
+
+$source = new SourceLenta();
+$parser = new ParserSimpleXML($source);
+
+?>
+```
+
+
+ParserSimpleXML - класс реализующий парсер SimpleXML
+
+```php
+<?php
+
+$parser = new ParserSimpleXML();
+
+// вернет необработанную информацию
+$parser->getRawData();
+
+// вернет обработанную информацию, объект PostCollection
+$parser->getData();
+
+?>
+```
+
+ParserReaderXML - класс реализующий парсер SAX
+
+```php
+<?php
+
+$parser = new ParserReaderXML();
+
+// вернет необработанную информацию
+$parser->getRawData();
+
+// вернет обработанную информацию, объект PostCollection
+$parser->getData();
+
+?>
+```
+
+Post - класс для работы с одной новостью
+
+```php
+<?php
+
+$post = new Post();
+
+// реализованы различные геттеры и сеттеры, пример названия название 
+$post->setTitle('Тестовая новость');
+
+$post->getTitle();
+
+// функция для возвращения актуальности поста с текущего дня возвращает массив ["datePublish" = дата публикации поста, "diff" = количество пройденных дней]
+$post->getDateDiffInfo();
+
+?>
+```
+
+PostCollection - класс для коллекцией объектов Post
+
+```php
+<?php
+
+$postCollection = new PostCollection();
+
+// добавление в коллекцию объект относящийся к интерфейсу IPost  
+$postCollection->addPost(new Post());
+
+// возвращает массив объектов постов 
+$postCollection->getAllPosts();
+
+// возвращает количество постов 
+$postCollection->countPosts();
+
+
+// возвращает отсортированную коллекцию обьектов по популярной теме (первые более часто упоминающие Categories)
+$postCollection->getSortedByCategory();
+
+?>
+```
+SourceLenta и SourceMK - классы источников
+
+```php
+<?php
+
+$source = new SourceMK();
+
+// вернуть путь к rss
+$source->getPath();
+
+// установить путь к rss
+$source->setPath();
+
+?>
+```
+
 
 
 
